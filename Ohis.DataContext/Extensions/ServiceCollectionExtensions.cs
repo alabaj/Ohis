@@ -9,7 +9,10 @@ namespace Ohis.DataContext.Extensions
         public static void AddDatabases(this IServiceCollection services)
         {
             services.AddSingleton<ReadClientRepository>();
+            services.AddSingleton<ReadTicketRepository>();
+
             services.AddSingleton<WriteClientRepository>();
+            services.AddSingleton<WriteTicketRepository>();
         }
     }
 }

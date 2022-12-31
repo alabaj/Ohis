@@ -8,6 +8,7 @@ namespace Ohis.DataContext
         public string DbPath { get; }
 
         public DbSet<ClientEntity> Clients { get; set; }
+        public DbSet<TicketEntity> Tickets { get; set; }
 
         public AppDbContext()
         {

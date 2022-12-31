@@ -15,4 +15,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ohis.Library\Ohis.Library.csproj" />
+  </ItemGroup>
+
 </Project>
