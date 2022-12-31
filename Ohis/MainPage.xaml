@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Ohis.ViewModels"
+             x:DataType="viewmodels:MainViewModel"
+             x:Class="Ohis.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{Binding Text}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="AddClient"
+                Command="{Binding AddCommand}"
+                Text="Add new client"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="GetAllClients"
+                Text="Get all clients"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="GetAllClients_Clicked"
+                HorizontalOptions="Center" />
+            
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
