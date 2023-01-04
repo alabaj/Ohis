@@ -23,7 +23,7 @@ public partial class MainPage : ContentPage
         {
             Id = Guid.NewGuid(),
             Name = "Test",
-            EmailAddress = "asd"
+            EmailAddress = "zalp833@gmail.com"
         };
 
         await _writeClientRepository.Add(client);
@@ -35,7 +35,7 @@ public partial class MainPage : ContentPage
     {
         var clients = await _readClientRepository.GetAll();
 
-        SemanticScreenReader.Announce(clients.Count().ToString());
+        SemanticScreenReader.Announce(clients.Count.ToString());
     }
 }
 

@@ -60,4 +60,10 @@
 	  <ProjectReference Include="..\Ohis.Library\Ohis.Library.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="MainFlyoutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
