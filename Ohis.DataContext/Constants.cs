@@ -11,6 +11,8 @@ namespace Ohis.DataContext
             SQLiteOpenFlags.Create |
             SQLiteOpenFlags.SharedCache;
 
+        public const string PostServer = "smtp.gmail.com";
+
         public static string DatabasePath()
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;

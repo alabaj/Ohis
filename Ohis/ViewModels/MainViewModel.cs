@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
+using Ohis.DataContext.Entities;
+using Ohis.Library.Domain.Enums;
+using Ohis.Library.Services.SenderServices;
 
 namespace Ohis.ViewModels
 {
@@ -12,11 +14,25 @@ namespace Ohis.ViewModels
         [RelayCommand]
         public void Add()
         {
-            Text = "Clicked";
-        }
+            EmailSenderService service = new EmailSenderService();
 
-        public MainViewModel()
-        {
+            var client = new ClientEntity()
+            {
+                Id = Guid.NewGuid(),
+                EmailAddress = "zalp833@gmail.com"
+            };
+
+            var ticket = new TicketEntity()
+            {
+                Client = client,
+                ClientId = client.Id,
+                Text = "hello!",
+                Title = "smpt test",
+                SendingDate = DateTime.Now,
+                Status = TicketStatuses.Active
+            };
+
+            service.SendMessage(ticket);
         }
     }
 }
