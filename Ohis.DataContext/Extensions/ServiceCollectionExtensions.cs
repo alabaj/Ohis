@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ohis.DataContext.Databases.Interfaces;
 using Ohis.DataContext.Databases.ReadRepositories;
 using Ohis.DataContext.Databases.WriteRepositories;
 
@@ -8,11 +9,11 @@ namespace Ohis.DataContext.Extensions
     {
         public static void AddDatabases(this IServiceCollection services)
         {
-            services.AddSingleton<ReadClientRepository>();
-            services.AddSingleton<ReadTicketRepository>();
+            services.AddSingleton<IReadClientRepository, ReadClientRepository>();
+            services.AddSingleton<IReadTicketRepository, ReadTicketRepository>();
 
-            services.AddSingleton<WriteClientRepository>();
-            services.AddSingleton<WriteTicketRepository>();
+            services.AddSingleton<IWriteClientRepository, WriteClientRepository>();
+            services.AddSingleton<IWriteTicketRepository, WriteTicketRepository>();
         }
     }
 }
