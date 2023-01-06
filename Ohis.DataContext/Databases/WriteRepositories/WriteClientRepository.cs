@@ -1,9 +1,8 @@
 ﻿using Ohis.DataContext.Databases.Base;
-using Ohis.DataContext.Entities;
+using Ohis.Library.Domain;
 
-namespace Ohis.DataContext.Databases.WriteRepositories
+namespace Ohis.DataContext.Databases.WriteRepositories;
+
+public class WriteClientRepository : WriteRepository<ClientEntity>
 {
-    public class WriteClientRepository : WriteRepository<ClientEntity>
-    {
-    }
 }

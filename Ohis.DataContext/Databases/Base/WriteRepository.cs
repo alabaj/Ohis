@@ -7,21 +7,21 @@
         {
             await Init();
 
-            return await Database.InsertAsync(entity);
+            return await _databaseConnection.InsertAsync(entity);
         }
 
         public async Task<int> Update(T entity)
         {
             await Init();
 
-            return await Database.UpdateAsync(entity);
+            return await _databaseConnection.UpdateAsync(entity);
         }
 
         public async Task<int> Delete(T entity)
         {
             await Init();
 
-            return await Database.DeleteAsync(entity);
+            return await _databaseConnection.DeleteAsync(entity);
         }
     }
 }

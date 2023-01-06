@@ -1,6 +1,6 @@
 ﻿using Ohis.DataContext.Databases.ReadRepositories;
 using Ohis.DataContext.Databases.WriteRepositories;
-using Ohis.DataContext.Entities;
+using Ohis.Library.Domain;
 using Ohis.ViewModels;
 
 namespace Ohis;

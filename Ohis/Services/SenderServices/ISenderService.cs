@@ -1,9 +1,8 @@
-﻿using Ohis.DataContext.Entities;
+﻿using Ohis.Library.Domain;
 
-namespace Ohis.Library.Services.SenderServices
+namespace Ohis.Library.Services.SenderServices;
+
+public interface ISenderService
 {
-    public interface ISenderService
-    {
-        void SendMessage(TicketEntity ticket);
-    }
+    void SendMessage(TicketEntity ticket);
 }

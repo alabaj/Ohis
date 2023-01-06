@@ -5,17 +5,17 @@ namespace Ohis.DataContext.Databases.Base
     public abstract class BaseRepository<T>
         where T : new()
     {
-        protected SQLiteAsyncConnection Database;
+        protected SQLiteAsyncConnection _databaseConnection;
 
         protected async Task Init()
         {
-            if (Database is not null)
+            if (_databaseConnection != null)
             {
                 return;
             }
 
-            Database = new SQLiteAsyncConnection(Constants.DatabasePath(), Constants.Flags);
-            await Database.CreateTableAsync<T>();
+            _databaseConnection = new SQLiteAsyncConnection(Constants.DatabasePath(), Constants.Flags);
+            await _databaseConnection.CreateTableAsync<T>();
         }
     }
 }

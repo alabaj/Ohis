@@ -9,14 +9,14 @@ namespace Ohis.DataContext.Databases.Base
         {
             await Init();
 
-            return await Database.Table<T>().Where(expression).FirstAsync();
+            return await _databaseConnection.Table<T>().Where(expression).FirstAsync();
         }
 
         public async Task<List<T>> GetAll()
         {
             await Init();
 
-            return await Database.Table<T>().ToListAsync();
+            return await _databaseConnection.Table<T>().ToListAsync();
         }
     }
 }
