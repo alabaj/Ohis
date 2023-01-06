@@ -3,6 +3,6 @@ using Ohis.Library.Domain;
 
 namespace Ohis.DataContext.Databases.Interfaces;
 
-public interface IWriteTicketRepository : IWriteRepository<TicketEntity>, 
+public interface IWriteTicketRepository : IWriteRepository<TicketEntity>
 {
 }
