@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Ohis.Library.Domain;
+using Ohis.DataContext.Entities;
+using System.Reflection;
 
 namespace Ohis.DataContext;
 
@@ -17,5 +18,13 @@ public class AppDbContext : DbContext
         DbPath = Path.Join(path, "ohis.db");
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite($"Data Source={DbPath}");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+        optionsBuilder.UseSqlite($"Data Source={DbPath}");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
 }

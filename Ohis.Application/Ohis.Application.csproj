@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ohis.DataContext\Ohis.DataContext.csproj" />
+    <ProjectReference Include="..\Ohis.Library\Ohis.Library.csproj" />
+  </ItemGroup>
+
+</Project>

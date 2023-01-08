@@ -7,7 +7,7 @@ namespace Ohis.Library.Services.SenderServices;
 
 public class EmailSenderService : ISenderService
 {
-    public void SendMessage(TicketEntity ticket)
+    public void SendMessage(TicketModel ticket)
     {
         string from = "olegme052@gmail.com";
         string to = ticket.Client.EmailAddress;

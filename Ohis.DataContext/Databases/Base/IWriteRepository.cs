@@ -1,10 +1,10 @@
 ﻿namespace Ohis.DataContext.Databases.Base
 {
-    public interface IWriteRepository<T>
-        where T : new()
+    public interface IWriteRepository<TEntity, TModel>
+        where TEntity : class
     {
-        Task<int> Add(T entity);
-        Task<int> Update(T entity);
-        Task<int> Delete(T entity);
+        TModel Add(TModel model);
+        TModel Update(TModel model);
+        bool Delete(TModel model);
     }
 }

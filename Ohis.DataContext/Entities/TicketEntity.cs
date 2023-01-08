@@ -1,6 +1,7 @@
-﻿using Ohis.Library.Domain.Enums;
+﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+using Ohis.Library.Domain.Enums;
 
-namespace Ohis.Library.Domain;
+namespace Ohis.DataContext.Entities;
 
 public class TicketEntity
 {

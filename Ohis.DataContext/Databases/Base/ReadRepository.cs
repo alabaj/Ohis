@@ -1,22 +1,28 @@
-﻿using System.Linq.Expressions;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Ohis.DataContext.Databases.Base
 {
-    public class ReadRepository<T> : BaseRepository<T>, IReadRepository<T>
-        where T : new()
+    public class ReadRepository<TEntity, TModel> : BaseRepository, IReadRepository<TEntity, TModel>
+        where TEntity : class
     {
-        public async Task<T> FindByProperty(Expression<Func<T, bool>> expression)
+        public ReadRepository(IMapper mapper, AppDbContext context) : base(mapper, context)
         {
-            await Init();
-
-            return await _databaseConnection.Table<T>().Where(expression).FirstAsync();
         }
 
-        public async Task<List<T>> GetAll()
+        public async Task<TModel> FindByProperty(Expression<Func<TEntity, bool>> expression)
         {
-            await Init();
+            var result = await _context.Set<TEntity>().AsNoTracking().Where(expression).FirstAsync();
 
-            return await _databaseConnection.Table<T>().ToListAsync();
+            return _mapper.Map<TModel>(result);
+        }
+
+        public async Task<List<TModel>> GetAll()
+        {
+            var result = await _context.Set<TEntity>().AsNoTracking().ToListAsync();
+
+            return _mapper.Map<List<TModel>>(result);
         }
     }
 }

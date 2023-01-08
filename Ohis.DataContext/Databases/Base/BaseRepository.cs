@@ -1,21 +1,16 @@
-﻿using SQLite;
+﻿using AutoMapper;
 
 namespace Ohis.DataContext.Databases.Base
 {
-    public abstract class BaseRepository<T>
-        where T : new()
+    public abstract class BaseRepository
     {
-        protected SQLiteAsyncConnection _databaseConnection;
+        private protected readonly IMapper _mapper;
+        private protected readonly AppDbContext _context;
 
-        protected async Task Init()
+        protected BaseRepository(IMapper mapper, AppDbContext context)
         {
-            if (_databaseConnection != null)
-            {
-                return;
-            }
-
-            _databaseConnection = new SQLiteAsyncConnection(Constants.DatabasePath(), Constants.Flags);
-            await _databaseConnection.CreateTableAsync<T>();
+            _mapper = mapper;
+            _context = context;
         }
     }
 }

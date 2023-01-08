@@ -2,10 +2,10 @@
 
 namespace Ohis.DataContext.Databases.Base
 {
-    public interface IReadRepository<T>
-        where T : new()
+    public interface IReadRepository<TEntity, TModel>
+        where TEntity : class
     {
-        Task<T> FindByProperty(Expression<Func<T, bool>> expression);
-        Task<List<T>> GetAll();
+        Task<TModel> FindByProperty(Expression<Func<TEntity, bool>> expression);
+        Task<List<TModel>> GetAll();
     }
 }

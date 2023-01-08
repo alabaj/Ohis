@@ -19,14 +19,14 @@ public partial class MainPage : ContentPage
 
     private async void AddClient_Clicked(object sender, EventArgs e)
     {
-        var client = new ClientEntity
+        var client = new ClientModel
         {
             Id = Guid.NewGuid(),
             Name = "Test",
             EmailAddress = "zalp833@gmail.com"
         };
 
-        await _writeClientRepository.Add(client);
+        _writeClientRepository.Add(client);
 
         SemanticScreenReader.Announce("Client was added");
     }

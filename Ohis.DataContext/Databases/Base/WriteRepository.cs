@@ -1,27 +1,40 @@
-﻿namespace Ohis.DataContext.Databases.Base
+﻿using AutoMapper;
+using AutoMapper.Internal.Mappers;
+
+namespace Ohis.DataContext.Databases.Base
 {
-    public class WriteRepository<T> : BaseRepository<T>, IWriteRepository<T>
-        where T : new()
+    public class WriteRepository<TEntity, TModel> : BaseRepository, IWriteRepository<TEntity, TModel>
+        where TEntity : class
     {
-        public async Task<int> Add(T entity)
+        public WriteRepository(IMapper mapper, AppDbContext context) : base(mapper, context)
         {
-            await Init();
-
-            return await _databaseConnection.InsertAsync(entity);
         }
 
-        public async Task<int> Update(T entity)
+        public TModel Add(TModel model)
         {
-            await Init();
+            var entity = _mapper.Map<TEntity>(model);
 
-            return await _databaseConnection.UpdateAsync(entity);
+            _context.Set<TEntity>().Add(entity);
+
+            return model;
         }
 
-        public async Task<int> Delete(T entity)
+        public TModel Update(TModel model)
         {
-            await Init();
+            var entity = _mapper.Map<TEntity>(model);
 
-            return await _databaseConnection.DeleteAsync(entity);
+            _context.Set<TEntity>().Update(entity);
+            
+            return model;
+        }
+
+        public bool Delete(TModel model)
+        {
+            var entity = _mapper.Map<TEntity>(model);
+
+            _context.Set<TEntity>().Remove(entity);
+
+            return true;
         }
     }
 }
