@@ -1,0 +1,83 @@
+﻿@page "/clients"
+
+@inject IClientsService ClientService
+@inject NavigationManager Navigation
+
+<div>
+    <div class="row">
+        <div class="col">
+            <button class="btn-primary" @onclick="@(x => Navigate("/clients/add"))">
+                Add client
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn-primary">
+                Edit client
+            </button>
+        </div>
+        <div class="col">
+            <button class="btn-secondary">
+                Add client
+            </button>
+        </div>
+    </div>
+</div>
+
+@if (clients == null)
+{
+    <LoadingSpinner/>
+}
+else
+{
+    if (clients.Count() == 0)
+    {
+        <p>No clients yet!</p>
+    }
+    else
+    {
+        <h1>Your clients:</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>EmailAddress</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var client in clients)
+                {
+                    <tr>
+                        <td>@client.Name</td>
+                        <td>@client.EmailAddress</td>
+                        <td>
+                            <a @onclick="@(x => Navigate("/clients/edit"))">Edit</a>
+                            <a @onclick="@(x => Delete(client.Id))">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+@code {
+    private IEnumerable<ClientModel> clients;
+
+    protected override async Task OnInitializedAsync()
+    {
+        clients = await ClientService.GetAllClients();
+    }
+
+    private void Navigate(string path)
+    {
+        Navigation.NavigateTo(path);
+
+    }
+
+    private async Task Delete(Guid id)
+    {
+        await ClientService.RemoveModel(id);
+    }
+
+}

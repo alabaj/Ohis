@@ -10,13 +10,19 @@ namespace Ohis.DataContext.Databases.Base
         {
         }
 
+        private void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
         public TModel Add(TModel model)
         {
             var entity = _mapper.Map<TEntity>(model);
 
             _context.Set<TEntity>().Add(entity);
+            SaveChanges();
 
-            return model;
+			return model;
         }
 
         public TModel Update(TModel model)
@@ -24,8 +30,9 @@ namespace Ohis.DataContext.Databases.Base
             var entity = _mapper.Map<TEntity>(model);
 
             _context.Set<TEntity>().Update(entity);
-            
-            return model;
+            SaveChanges();
+
+			return model;
         }
 
         public bool Delete(TModel model)
@@ -33,8 +40,9 @@ namespace Ohis.DataContext.Databases.Base
             var entity = _mapper.Map<TEntity>(model);
 
             _context.Set<TEntity>().Remove(entity);
+			SaveChanges();
 
-            return true;
+			return true;
         }
     }
 }

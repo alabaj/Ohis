@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ohis.MauiBlazor", "Ohis.Mau
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ohis.Application", "Ohis.Application\Ohis.Application.csproj", "{11B04466-AAEB-4A6C-8218-E0EE078508BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyConsoleApp", "DummyConsoleApp\DummyConsoleApp.csproj", "{05A25DF7-E3DD-4E80-AFEE-57781AD49872}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DummyConsoleApp", "DummyConsoleApp\DummyConsoleApp.csproj", "{05A25DF7-E3DD-4E80-AFEE-57781AD49872}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

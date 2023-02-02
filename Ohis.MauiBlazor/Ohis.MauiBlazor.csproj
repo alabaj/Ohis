@@ -54,6 +54,7 @@
 
     <ItemGroup>
       <Content Remove="Pages\Clients.razor" />
+      <Content Remove="Pages\Clients\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
@@ -68,16 +69,22 @@
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Clients.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Clients\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="Pages\Clients.razor" />
+      <None Include="Pages\Clients\Index.razor" />
+      <None Include="Pages\Clients\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Ohis.Application\Ohis.Application.csproj" />
       <ProjectReference Include="..\Ohis.DataContext\Ohis.DataContext.csproj" />
       <ProjectReference Include="..\Ohis.Library\Ohis.Library.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Pages\Clients\Edit.razor" />
     </ItemGroup>
 
 </Project>

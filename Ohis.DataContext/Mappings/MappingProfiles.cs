@@ -8,7 +8,7 @@ public class MappingProfiles : Profile
 {
     public MappingProfiles()
     {
-        CreateMap<ClientModel, ClientEntity>();
-        CreateMap<TicketModel, TicketEntity>();
-    }
+        CreateMap<ClientEntity, ClientModel>().ReverseMap();
+		CreateMap<TicketEntity, TicketModel>().ReverseMap();
+	}
 }

@@ -1,0 +1,31 @@
+﻿@page "/clients/add"
+
+@inject IClientsService _clientService
+
+<h1>Add a new client</h1>
+<EditForm Model="@Client" OnValidSubmit="@SubmitValidForm" OnInvalidSubmit="@SubmitInvalidForm">
+	<p class="input-group-text">
+		<InputText id="name" @bind-Value="Client.Name" placeholder="Name"/>
+	</p>
+	<p class="input-group-text">
+		<InputText id="email" @bind-Value="Client.EmailAddress" placeholder="Email"/>
+	</p>
+	<button class="btn-primary" type="submit">Add</button>
+</EditForm>
+
+
+@code 
+{
+	public ClientModel Client = new();
+
+	void SubmitValidForm()
+	{
+		Console.WriteLine("Submitted a valid model!");
+		_clientService.AddModel(Client);
+	}
+
+	void SubmitInvalidForm()
+	{
+		Console.WriteLine("Submitted an invalid model!");
+	}
+}
