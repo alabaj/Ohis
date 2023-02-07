@@ -24,5 +24,12 @@ namespace Ohis.DataContext.Databases.Base
 
             return _mapper.Map<List<TModel>>(result);
         }
+
+        public async Task<List<TModel>> GetAll(Expression<Func<TEntity, bool>> expression)
+        {
+            var result = await _context.Set<TEntity>().AsNoTracking().Where(expression).ToListAsync();
+
+            return _mapper.Map<List<TModel>>(result);
+        }
     }
 }

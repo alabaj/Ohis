@@ -7,5 +7,6 @@ namespace Ohis.DataContext.Databases.Base
     {
         Task<TModel> FindByProperty(Expression<Func<TEntity, bool>> expression);
         Task<List<TModel>> GetAll();
+        Task<List<TModel>> GetAll(Expression<Func<TEntity, bool>> expression);
     }
 }

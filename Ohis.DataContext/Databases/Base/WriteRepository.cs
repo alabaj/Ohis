@@ -13,6 +13,7 @@ namespace Ohis.DataContext.Databases.Base
         private void SaveChanges()
         {
             _context.SaveChanges();
+            //_context.ChangeTracker.Clear();
         }
 
         public TModel Add(TModel model)
