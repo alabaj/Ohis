@@ -40,8 +40,8 @@ else
                         <td>@client.Name</td>
                         <td>@client.EmailAddress</td>
                         <td>
-                            <a @onclick="@(x => Navigate("/clients/edit"))">Edit</a>
-                            <a @onclick="@(x => Delete(client.Id))">Delete</a>
+                            <button @onclick="@(x => Navigate("/clients/edit"))">Edit</button>
+                            <button @onclick="@(x => Delete(client.Id))">Delete</button>
                         </td>
                     </tr>
                 }
@@ -61,13 +61,12 @@ else
 
     private void Navigate(string path)
     {
-        Navigation.NavigateTo(path);
-
+        Navigation.NavigateTo(path, true);
     }
 
     private async Task Delete(Guid id)
     {
         await ClientService.RemoveModel(id);
+        Navigate("/clients");
     }
-
 }

@@ -1,6 +1,7 @@
 ﻿@page "/clients/add"
 
 @inject IClientsService _clientService
+@inject NavigationManager Navigation
 
 <h1>Add a new client</h1>
 <EditForm Model="@Client" OnValidSubmit="@SubmitValidForm" OnInvalidSubmit="@SubmitInvalidForm">
@@ -18,10 +19,16 @@
 {
 	public ClientModel Client = new();
 
+	private void Navigate(string path)
+	{
+		Navigation.NavigateTo(path);
+	}
+
 	void SubmitValidForm()
 	{
 		Console.WriteLine("Submitted a valid model!");
 		_clientService.AddModel(Client);
+		Navigation.NavigateTo("/clients");
 	}
 
 	void SubmitInvalidForm()
